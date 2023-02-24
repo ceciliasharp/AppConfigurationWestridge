@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1cc4be41-048e-46ab-92c3-9c28a58e203e/resourceGroups/rg-app-config-demo/providers/Microsoft.Web/sites/app-config-demo",
+    "appService.deploySubpath": "demo\\bin\\Debug\\net7.0\\publish"
+}
