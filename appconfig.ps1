@@ -5,7 +5,6 @@ $appServicePlanName = "asp-appconfigdemo-$random"
 $webAppName = "app-appconfigdemo-$random"
 $keyVaultName = "kvappconfigdemo$random"
 $appConfigName = "app-appconfigdemo-$random"
-$plan = "D"
 
 az group create --name $resourceGroupName --location $location
 
@@ -18,7 +17,7 @@ az keyvault create --name $keyVaultName --resource-group $resourceGroupName --lo
 az keyvault set-policy --name $keyVaultName --object-id $webappidentity --secret-permissions get
 $kvSecret = az keyvault secret set --vault-name $keyVaultName --name "TheSecretKey" --value "RyMwniQ.!6pbjCowLxcbgJ_BVCpRyXhEwic2nUW" | ConvertFrom-Json | Select-Object -ExpandProperty id
 
-$appconfig = az appconfig create --name $appConfigName --resource-group $resourceGroupName --location $location --sku $plan 
+$appconfig = az appconfig create --name $appConfigName --resource-group $resourceGroupName --location $location 
 $appconfigId = $appconfig | ConvertFrom-Json | Select-Object -ExpandProperty id
 az role assignment create --role "App Configuration Data Reader" --scope $appconfigId --assignee-object-id $webappidentity --assignee-principal-type ServicePrincipal
 az appconfig kv set --name $appConfigName --key "Demo:title" --value "QA Azure" --label "qa" --yes
